@@ -1,4 +1,5 @@
 import 'package:get/route_manager.dart';
+import 'package:gitstars/src/main/views/main.view.dart';
 import 'package:gitstars/src/splash/views/splash.view.dart';
 
 import 'app.routes.dart';
@@ -12,5 +13,6 @@ abstract class PagesRoutes {
   static final routes = [
     // GetPage(name: AppRoutes.MAIN, page: () => MainView()),
     GetPage(name: AppRoutes.SPLASH_SCREEN, page: () => SplashView()),
+    GetPage(name: AppRoutes.MAIN, page: () => MainView()),
   ];
 }
