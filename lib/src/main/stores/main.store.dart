@@ -8,6 +8,8 @@ abstract class IMainStore extends GetxController {
   Future<bool> fetchUserStars(UserStarsParams _params);
   ELoadingStatus get loadingStatus;
   UserStarsModel get userStarsModel;
+  bool get showSearch;
+  set showSearch(bool value);
 }
 
 class MainStore extends IMainStore {
@@ -17,6 +19,7 @@ class MainStore extends IMainStore {
 
   final _loadingStatus = ELoadingStatus.completed.obs;
   final _user = UserStarsModel().obs;
+  final _showSearch = false.obs;
 
   @override
   Future<bool> fetchUserStars(UserStarsParams _params) async {
@@ -33,4 +36,10 @@ class MainStore extends IMainStore {
 
   @override
   UserStarsModel get userStarsModel => _user.value;
+
+  @override
+  bool get showSearch => _showSearch.value;
+
+  @override
+  set showSearch(bool value) => _showSearch.value = value;
 }

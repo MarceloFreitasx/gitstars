@@ -12,6 +12,8 @@ class MainController {
 
   bool get isLoading => _store.loadingStatus == ELoadingStatus.loading;
   UserStarsModel get userStarsModel => _store.userStarsModel;
+  bool get showSearch => _store.showSearch;
+  set showSearch(bool value) => _store.showSearch = value;
 
   fetch() {
     _store.fetchUserStars(UserStarsParams("marcelofreitasx"));

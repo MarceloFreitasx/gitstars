@@ -52,7 +52,7 @@ class AppTheme {
           subtitle1: TextStyle(fontSize: 19.0, fontWeight: FontWeight.bold, color: AppColors.GRAY4F),
           subtitle2: TextStyle(fontSize: 19.0, color: AppColors.GRAY4F),
           bodyText1: TextStyle(fontSize: 15.0, color: AppColors.GRAY4F),
-          bodyText2: TextStyle(fontSize: 14.0, fontWeight: FontWeight.normal, color: Colors.black87),
+          bodyText2: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold, color: Colors.black87),
           caption: TextStyle(fontSize: 11.0, color: AppColors.GRAY4F, height: 1.1),
         ),
       );
