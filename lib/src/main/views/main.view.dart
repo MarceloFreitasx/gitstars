@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:gitstars/src/main/controllers/main.controller.dart';
 
-class MainView extends StatelessWidget {
+class MainView extends GetView<MainController> {
   const MainView({Key key}) : super(key: key);
 
   @override
@@ -10,8 +12,12 @@ class MainView extends StatelessWidget {
         title: Text("GitStars"),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          child: Text("Main"),
+        child: Column(
+          children: [
+            Container(
+              child: Text("Main"),
+            ),
+          ],
         ),
       ),
     );
