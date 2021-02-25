@@ -82,17 +82,19 @@ class Node {
     this.name,
     this.stargazerCount,
     this.url,
-    this.updatedAt,
     this.forkCount,
     this.description,
+    this.primaryLanguage,
+    this.pushedAt,
   });
 
   String name;
   int stargazerCount;
   String url;
-  DateTime updatedAt;
   int forkCount;
   String description;
+  PrimaryLanguage primaryLanguage;
+  DateTime pushedAt;
 
   factory Node.fromRawJson(String str) => Node.fromJson(json.decode(str));
 
@@ -102,17 +104,43 @@ class Node {
         name: json["name"] == null ? null : json["name"],
         stargazerCount: json["stargazerCount"] == null ? null : json["stargazerCount"],
         url: json["url"] == null ? null : json["url"],
-        updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
         forkCount: json["forkCount"] == null ? null : json["forkCount"],
         description: json["description"] == null ? null : json["description"],
+        primaryLanguage: json["primaryLanguage"] == null ? null : PrimaryLanguage.fromJson(json["primaryLanguage"]),
+        pushedAt: json["pushedAt"] == null ? null : DateTime.parse(json["pushedAt"]),
       );
 
   Map<String, dynamic> toJson() => {
         "name": name == null ? null : name,
         "stargazerCount": stargazerCount == null ? null : stargazerCount,
         "url": url == null ? null : url,
-        "updatedAt": updatedAt == null ? null : updatedAt.toIso8601String(),
         "forkCount": forkCount == null ? null : forkCount,
         "description": description == null ? null : description,
+        "primaryLanguage": primaryLanguage == null ? null : primaryLanguage.toJson(),
+        "pushedAt": pushedAt == null ? null : pushedAt.toIso8601String(),
+      };
+}
+
+class PrimaryLanguage {
+  PrimaryLanguage({
+    this.color,
+    this.name,
+  });
+
+  String color;
+  String name;
+
+  factory PrimaryLanguage.fromRawJson(String str) => PrimaryLanguage.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory PrimaryLanguage.fromJson(Map<String, dynamic> json) => PrimaryLanguage(
+        color: json["color"] == null ? null : json["color"],
+        name: json["name"] == null ? null : json["name"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "color": color == null ? null : color,
+        "name": name == null ? null : name,
       };
 }

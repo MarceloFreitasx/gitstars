@@ -8,7 +8,6 @@ class AppColors {
 
   static const Color GRAYEC = Color(0xFFECEDF1);
   static const Color GRAYDA = Color(0xFFDADADA);
-  static const Color GRAY8A = Color(0xFF8A8A8A);
   static const Color GRAY4F = Color(0xFF4F4F4F);
 
   static const Color SHADOW = Color.fromRGBO(166, 171, 189, 0.53);

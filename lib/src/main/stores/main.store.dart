@@ -10,6 +10,9 @@ abstract class IMainStore extends GetxController {
   UserStarsModel get userStarsModel;
   bool get showSearch;
   set showSearch(bool value);
+  bool get userLoaded;
+  bool get showUserBio;
+  set showUserBio(bool value);
 }
 
 class MainStore extends IMainStore {
@@ -19,13 +22,20 @@ class MainStore extends IMainStore {
 
   final _loadingStatus = ELoadingStatus.completed.obs;
   final _user = UserStarsModel().obs;
+  final _userLoaded = false.obs;
   final _showSearch = false.obs;
+  final _showUserBio = false.obs;
 
   @override
   Future<bool> fetchUserStars(UserStarsParams _params) async {
+    _userLoaded.value = false;
     _loadingStatus.value = ELoadingStatus.loading;
     return await _repository.fetchUserInfo(_params).then((value) {
-      if (value != null) _user.value = value;
+      if (value != null) {
+        _user.value = value;
+        _userLoaded.value = true;
+        _user.value.starredRepositories.nodes.sort((a, b) => b.pushedAt.compareTo(a.pushedAt));
+      }
       _loadingStatus.value = _repository.loadingStatus;
       return value != null;
     });
@@ -42,4 +52,13 @@ class MainStore extends IMainStore {
 
   @override
   set showSearch(bool value) => _showSearch.value = value;
+
+  @override
+  bool get userLoaded => _userLoaded.value;
+
+  @override
+  bool get showUserBio => _showUserBio.value;
+
+  @override
+  set showUserBio(bool value) => _showUserBio.value = value;
 }

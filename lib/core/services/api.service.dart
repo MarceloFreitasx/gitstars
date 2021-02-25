@@ -16,7 +16,6 @@ class ApiService implements IApi {
     );
     _link = _authLink.concat(_httpLink);
     client = GraphQLClient(
-      /// **NOTE** The default store is the InMemoryStore, which does NOT persist to disk
       cache: GraphQLCache(),
       link: _link,
     );
@@ -34,14 +33,9 @@ class ApiService implements IApi {
       variables: <String, dynamic>{
         'query': data,
       },
+      fetchPolicy: FetchPolicy.noCache,
     );
     final QueryResult response = await client.query(options);
-
-    print("======start======");
-    print("url: ${_httpLink.uri.toString()}");
-    print("query: $data");
-    print("responseData: ${response.data}");
-    print("=======end=======");
 
     return response.data;
   }

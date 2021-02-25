@@ -18,9 +18,13 @@ class UserStarsParams {
           name
           stargazerCount
           url
-          updatedAt
           forkCount
           description
+          primaryLanguage {
+            color
+            name
+          }
+          pushedAt
         }
       }
     }

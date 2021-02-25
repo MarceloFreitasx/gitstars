@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/style.dart';
 import 'package:gitstars/core/styles/styles.dart';
 import 'package:gitstars/src/main/models/userstars.model.dart';
 
@@ -22,7 +24,7 @@ class UserProfile extends StatelessWidget {
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10).copyWith(top: 10),
               child: Hero(
                 tag: user.avatarUrl,
                 child: CircleAvatar(
@@ -58,13 +60,23 @@ class UserProfile extends StatelessWidget {
             ),
           ],
         ),
-        IconButton(
-          padding: EdgeInsets.zero,
-          visualDensity: VisualDensity.compact,
-          icon: Icon(Icons.keyboard_arrow_down),
-          onPressed: onShowBio,
+        InkWell(
+          onTap: onShowBio,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Bio", style: AppStyles.caption2),
+              showBio ? Icon(Icons.keyboard_arrow_up) : Icon(Icons.keyboard_arrow_down),
+            ],
+          ),
         ),
-        if (showBio) Text(user.bioHtml, style: AppStyles.caption1),
+        if (showBio)
+          Html(
+            data: user.bioHtml,
+            style: {
+              "div": Style.fromTextStyle(AppStyles.body3),
+            },
+          ),
       ],
     );
   }

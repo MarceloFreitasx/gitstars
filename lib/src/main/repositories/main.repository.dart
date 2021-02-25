@@ -21,7 +21,7 @@ class MainRepository extends IMainRepository {
 
     _loadingStatus = ELoadingStatus.completed;
 
-    if (!result.containsKey("erros")) {
+    if (result != null) {
       return UserStarsModel.fromJson(result["user"]);
     } else {
       return null;
