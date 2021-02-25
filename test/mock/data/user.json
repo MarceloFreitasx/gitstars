@@ -1,0 +1,42 @@
+{
+    "data": {
+      "user": {
+        "name": "Marcelo Freitas",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/6873417?s=250&u=90f1171f0035757a21a7f9b38523127250bd67b9&v=4",
+        "login": "MarceloFreitasx",
+        "bioHTML": "<div>Computer Scientist\nFounder of <a class=\"user-mention\" data-hovercard-type=\"organization\" data-hovercard-url=\"/orgs/Maquinarama/hovercard\" href=\"https://github.com/Maquinarama\">@Maquinarama</a> \nWeb and Mobile (Android/iOS) Developer\n- Code lover</div>",
+        "url": "https://github.com/MarceloFreitasx",
+        "email": "marcelofreitasx@gmail.com",
+        "location": "Vitória da Conquista, Bahia, Brasil",
+        "starredRepositories": {
+          "totalCount": 2,
+          "nodes": [
+            {
+              "name": "linkedin_login",
+              "stargazerCount": 28,
+              "url": "https://github.com/d3xt3r2909/linkedin_login",
+              "forkCount": 16,
+              "description": "OAuth login for Flutter",
+              "primaryLanguage": {
+                "color": "#00B4AB",
+                "name": "Dart"
+              },
+              "pushedAt": "2021-01-31T22:50:56Z"
+            },
+            {
+              "name": "material-components-android",
+              "stargazerCount": 11994,
+              "url": "https://github.com/material-components/material-components-android",
+              "forkCount": 2285,
+              "description": "Modular and customizable Material Design UI components for Android",
+              "primaryLanguage": {
+                "color": "#b07219",
+                "name": "Java"
+              },
+              "pushedAt": "2021-02-24T09:13:28Z"
+            }
+          ]
+        }
+      }
+    }
+  }

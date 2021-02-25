@@ -20,32 +20,36 @@ class UserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10).copyWith(top: 10),
-              child: Hero(
-                tag: user.avatarUrl,
-                child: CircleAvatar(
-                  radius: 50,
-                  child: CachedNetworkImage(
-                    imageUrl: user.avatarUrl,
-                    imageBuilder: (_, imageProvider) => ClipOval(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: imageProvider,
-                            fit: BoxFit.cover,
+            if (user.avatarUrl != null) ...{
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10).copyWith(top: 10),
+                child: Hero(
+                  tag: user.avatarUrl,
+                  child: CircleAvatar(
+                    radius: 50,
+                    child: CachedNetworkImage(
+                      imageUrl: user.avatarUrl,
+                      imageBuilder: (_, imageProvider) => ClipOval(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: imageProvider,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
+                      errorWidget: (___, __, _) => Icon(Icons.warning),
                     ),
                   ),
                 ),
               ),
-            ),
-            Container(width: 10),
+              Container(width: 10),
+            },
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,16 +64,19 @@ class UserProfile extends StatelessWidget {
             ),
           ],
         ),
-        InkWell(
-          onTap: onShowBio,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Bio", style: AppStyles.caption2),
-              showBio ? Icon(Icons.keyboard_arrow_up) : Icon(Icons.keyboard_arrow_down),
-            ],
+        if (onShowBio != null)
+          InkWell(
+            onTap: onShowBio,
+            child: Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("Bio", style: AppStyles.caption2),
+                  showBio ? Icon(Icons.keyboard_arrow_up) : Icon(Icons.keyboard_arrow_down),
+                ],
+              ),
+            ),
           ),
-        ),
         if (showBio)
           Html(
             data: user.bioHtml,
