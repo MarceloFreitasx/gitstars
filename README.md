@@ -25,5 +25,7 @@ Consumindo a API GraphQL do GitHub, você deve fazer um app com o seguinte funci
 
 1. Caso não tenha o flutter instalado, [clique aqui](https://flutter.dev/docs/get-started/install/) e leia sua documentação.
 2. Faça o clone do projeto e vá para a pasta raiz.
-3. Execute o comando ```flutter pub get``` para baixar as dependências.
-4. Execute o comando ```flutter run```.
+3. Altere a constante <b>TOKEN</b> em ```lib/core/config.dart``` para sua chave secreta do github
+4. Caso não tenha a chave [clique aqui](https://docs.github.com/pt/github/authenticating-to-github/creating-a-personal-access-token) e configure com o escopo ```repo``` e ```user```
+5. Execute o comando ```flutter pub get``` para baixar as dependências.
+6. Execute o comando ```flutter run```.
