@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import 'package:gitstars/src/main/models/userstars.model.dart';
 import 'package:gitstars/src/main/widgets/starreditens.widget.dart';
 
-import '../mock/mock.dart';
+import '../mock/mockdata.dart';
 
 void main() {
   Future<void> _createWidget(WidgetTester tester) async {
-    UserStarsModel data = await Mock().getData();
+    UserStarsModel data = await MockData().getData();
 
     await tester.pumpWidget(
       GetMaterialApp(

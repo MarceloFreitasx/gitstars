@@ -3,7 +3,7 @@ import 'package:gitstars/src/main/models/userstars.model.dart';
 import 'package:gitstars/src/main/models/userstars.params.dart';
 import 'package:gitstars/src/main/stores/main.store.dart';
 
-import '../../mock/mock.dart';
+import '../../mock/mockdata.dart';
 
 class MainStoreMock extends IMainStore {
   var _loadingStatus = ELoadingStatus.completed;
@@ -18,7 +18,7 @@ class MainStoreMock extends IMainStore {
 
   @override
   Future<bool> fetchUserStars(UserStarsParams _params) async {
-    _user = await Mock().getData();
+    _user = await MockData().getData();
     _userLoaded = true;
     return true;
   }
