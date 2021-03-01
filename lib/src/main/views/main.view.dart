@@ -33,16 +33,27 @@ class MainView extends GetView<MainController> {
       body: Column(
         children: [
           Obx(() => controller.showSearch || !controller.userLoaded
-              ? TextFormField(
-                  controller: controller.userSearch,
-                  decoration: InputDecoration(
-                    labelText: "Nome do usuário:",
-                    labelStyle: AppStyles.caption1,
-                    contentPadding: EdgeInsets.all(10),
-                  ),
-                  style: AppStyles.body2,
-                  inputFormatters: [Utils.onlyLettersAndNumbers],
-                  onFieldSubmitted: (value) => controller.fetch(),
+              ? Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        controller: controller.userSearch,
+                        decoration: InputDecoration(
+                          labelText: "Nome do usuário:",
+                          labelStyle: AppStyles.caption1,
+                          contentPadding: EdgeInsets.all(10),
+                        ),
+                        textInputAction: TextInputAction.search,
+                        style: AppStyles.body2,
+                        inputFormatters: [Utils.onlyLettersAndNumbers],
+                        onFieldSubmitted: (value) => controller.fetch(),
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.search),
+                      onPressed: () => controller.fetch(),
+                    ),
+                  ],
                 )
               : Container()),
           Expanded(
